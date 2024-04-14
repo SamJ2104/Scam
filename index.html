@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𑪽cam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <style>
+body{
+    font-family: "lato";
+    background-color: black;
+    color: aliceblue;
+    text-align: center;
+}
+#heading{
+    text-decoration: underline;
+}
+#ifdb, #fbi, #frauddep,#isp{
+    color:chartreuse;
+}
+#root{
+    color: rgb(43, 122, 226);
+}
+#eth{
+    color: blueviolet;
+}
+#ransom{
+    color: crimson;
+}
+#payout{
+    color: yellow;
+}
+    </style>
+</head>
+<body>
+    <h1>𑪽cam</h1>
+    <input placeholder="Phone Number" type="tel">
+    <button id="scan">Scan</button>
+    <h3 id="packets"></h3>
+    <div><b>
+    <a id="kolkata"></a>
+    <br>
+    <a id="number"></a> <a id="street"></a>
+    <br>
+    <a href="" id="gmaps"></a>
+    <br><br>
+    <a id="heading"></a><br>
+    <a id="fname"></a><br>
+    <a id="ip"></a>
+    <br>
+    <a id="birthday"></a>
+    <br>
+    <a id="posistion"></a><br><br>
+    <a id="ifdb"></a> <br>
+    <a id="fbi"></a> <br>
+    <a id="frauddep"></a> <br>
+    <a id="isp"></a> <br><br>
+
+    <a id="root"></a> <br>
+    <a id="eth"></a> <br>
+    <a id="ransom"></a> <br>
+    <a id="payout"></a> <br>
+
+    <script>
+        // JSON data
+var jsonData = {
+        "names": [
+          "Khatu Khadzhiev",
+          "Alkhazur Bisliev",
+          "Temirbek Inarkaevich",
+          "Visa Usamov",
+          "Islambek Batukayev",
+          "Elberd Shishani",
+          "Abdulmezhid Timayev",
+          "Muslim Umkhayev",
+          "Aarav Patel",
+          "Neha Sharma",
+          "Vikram Singh",
+          "Ayesha Khan",
+          "Rohan Gupta",
+          "Priya Patel",
+          "Ananya Reddy",
+          "Rajesh Kumar"
+        ]
+  };
+  
+  // Get a random index
+  var randomIndex = Math.floor(Math.random() * jsonData.names.length);
+  
+  // Get the random name
+  var randomName = jsonData.names[randomIndex];
+  
+  // Print the random name
+  console.log(randomName);
+
+  let ip1 = Math.floor(Math.random() * 10)
+  let ip2 = Math.floor(Math.random() * 10)
+  let ip3 = Math.floor(Math.random() * 10)
+  let ip = `10.${ip1}.${ip2}.${ip3}`
+  console.log(ip)
+
+
+  // JSON data
+var jsonData = {
+    "streets": [
+        "Sudder St",
+        "JA Block, Sector III",
+        "Shakespeare Sarani Rd",
+        "1st Ave",
+        "Nirmal Sengupta Sarani",
+        "Acharya Prafulla Chandra Rd",
+        "Radha Kanta Jew St",
+        "Rajshekhar Bose Sarani",
+        "Pratapaditya Rd",
+        "Strand Road",
+        "Old Court House St",
+        "Kohinoor Building",
+        "Matheswartala Road",
+        "Elgin Rd",
+        "Prince Anwar Shah Rd",
+        "Sarat Bose Road",
+        "Wood St",
+        "Lake Town",
+        "Hospital Road",
+        "Jessore Rd",
+        "FE Block Lane",
+        "Gariahat Shopping Complex",
+        "Ballygunge Circular Rd",
+        "Southern Avenue",
+        "Northern Ave",
+        "Rafi Ahmed Kidwai Rd",
+        "Rashbehari Ave Connector",
+        "Acropolis Mall",
+        "CIT Rd",
+        "Block N"
+    ]
+}
+
+const apiUrl = 'https://random-data-api.com/api/v3/projects/034a8fd1-423c-43e9-9aab-26f24de3ebcc?api_key=tMJn3Gb9lLeSHTJC1c39VQ';
+
+let fname, lname, birthday, company;
+
+
+
+// Make a GET request
+fetch(apiUrl)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+    let birthday = data.birthday;
+    let compname = data.company_name;
+    let compos = data.company_position;
+    let company = compos + " of " + compname;
+
+    var randomIndex = Math.floor(Math.random() * jsonData.streets.length);
+    var randomStreet = jsonData.streets[randomIndex];
+    let streetNum = Math.floor(Math.random() * 100);
+    let kolkata2 = "Kolkata, West Bengal 700001, India, "
+    let iframesrc = encodeURI("https://maps.google.com/maps?q=" + kolkata2 + streetNum + ", " + randomStreet);
+    console.log(iframesrc)
+    console.log(randomStreet);
+    console.log(streetNum)
+
+    document.getElementById("scan").onclick = function(){
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+          }
+        
+          async function details() {
+            await sleep(500);
+            document.getElementById("packets").textContent = "Sending Trace Packets...";
+            await sleep(5000);
+            document.getElementById("kolkata").textContent = "Kolkata, West Bengal 700001, India";
+            await sleep(500)
+            document.getElementById("number").textContent = streetNum;
+            document.getElementById("street").textContent = randomStreet;
+            await sleep(500)
+            document.getElementById("gmaps").textContent = "Google Maps";
+            document.getElementById("gmaps").href = iframesrc;
+            await sleep(2000);
+            document.getElementById("fname").textContent = randomName;
+            document.getElementById("ip").textContent = ip;
+            document.getElementById("birthday").textContent = birthday;
+            document.getElementById("posistion").textContent = company;
+            document.getElementById("heading").textContent = "Phone Number Owner";
+            await sleep(1000)
+            document.getElementById("ifdb").textContent = "Reported To The IFDB/CIFAS";
+            await sleep(1500)
+            document.getElementById("fbi").textContent = "Reported To The FBI";
+            await sleep(1500)
+            document.getElementById("frauddep").textContent = "Reported To The Kolkata Fraud Department";
+            await sleep(1500)
+            document.getElementById("isp").textContent = "Reported to the ISP";
+            await sleep(1500)
+            document.getElementById("root").textContent = "Requesting & Confirming Root Ownership";
+            await sleep(5000)
+            document.getElementById("eth").textContent = "Creating Fresh Ethereum Wallet, Hang Up Now";
+            await sleep(6000)
+            document.getElementById("ransom").textContent = "Sending Premade Ransom Message, You will be Updated at Payout";
+            await sleep(180000)
+            document.getElementById("payout").textContent = "Payout of 0.081 ETH / £200 transferred to Main Wallet";
+        }
+        details()
+    };
+
+})
+.catch(error => {
+    console.error('Error:', error);
+  });
+    </script> 
+</body>
+</html>
